@@ -1,0 +1,42 @@
+LogLevel DEBUG2
+
+PubkeyAuthentication    yes
+HostbasedAuthentication yes
+IgnoreUserKnownHosts    yes
+PasswordAuthentication  no
+PermitEmptyPasswords    no
+AuthorizedKeysFile      /ssh/authorized_keys_%u
+
+Protocol 2
+
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+Ciphers chacha20-poly1305@openssh.com,aes256-ctr,aes128-ctr
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
+
+# Authentication
+StrictModes yes
+LoginGraceTime 120
+PermitRootLogin no
+AllowUsers jump
+
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+GatewayPorts no
+PermitTTY no
+PermitTunnel no
+PermitOpen any
+ForceCommand /etc/ssh/execloadkey
+
+TCPKeepAlive yes
+ClientAliveInterval 0
+ClientAliveCountMax 3
+UseDNS no
+
+# Deprecated
+# UsePrivilegeSeparation yes
+# UseLogin no
+
+AcceptEnv LANG LC_* TERM
+
+PrintMotd no
+Banner /etc/ssh/banner

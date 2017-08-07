@@ -1,0 +1,5 @@
+Host *
+    ForwardAgent yes
+    RequestTTY yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null

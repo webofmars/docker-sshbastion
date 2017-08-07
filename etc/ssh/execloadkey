@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "+ starting execloadkey"
+echo "+ debug : originla command : $SSH_ORIGINAL_COMMAND"
+
+KEY=$(echo "$SSH_ORIGINAL_COMMAND" | sed -e "s/^ssh-add \/ssh\/keys\/\(.*\)$/\1/")
+
+echo "+ key to load: $KEY"
+if [ -r $KEY ]; then
+    ssh-add /ssh/keys/$KEY
+    exit 0
+fi
+
+echo "+ go away nasty"
+exit1

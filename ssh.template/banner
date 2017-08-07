@@ -1,0 +1,3 @@
+docker sshproxy by webofmars 2017 - Groovy Baby !
+
+You are not supposed to access this host directly by ssh but just pass through it to reach other ssh hosts
