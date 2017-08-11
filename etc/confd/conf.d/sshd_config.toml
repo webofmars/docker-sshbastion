@@ -1,0 +1,13 @@
+[template]
+src = "sshd_config.tmpl"
+dest = "/etc/ssh/sshd_config"
+uid = 0
+gid = 0
+mode = "0644"
+check_cmd = "/usr/sbin/sshd -t -f {{.src}}"
+#reload_cmd = "killall -HUP sshd"
+keys = [
+    "/sshbastion/mode",
+    "/sshbastion/log/level",
+    "/sshbastion/users"
+]

@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv ash
+
+/opt/confd --onetime --backend env

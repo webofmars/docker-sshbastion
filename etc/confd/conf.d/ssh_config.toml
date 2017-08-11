@@ -1,0 +1,8 @@
+[template]
+src = "ssh_config.tmpl"
+dest = "/etc/ssh/ssh_config"
+uid = 0
+gid = 0
+mode = "0644"
+keys = [
+]
