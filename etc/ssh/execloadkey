@@ -1,15 +1,18 @@
 #!/bin/sh
 
-echo "+ starting execloadkey"
-echo "+ debug : originla command : $SSH_ORIGINAL_COMMAND"
+# note: this is still a WIP. the main problem is that this doesn't allow you to change username (but that on openssh side)
 
-KEY=$(echo "$SSH_ORIGINAL_COMMAND" | sed -e "s/^ssh-add \/ssh\/keys\/\(.*\)$/\1/")
+echo "+ starting execloadkey"
+echo "+ original ssh command : $SSH_ORIGINAL_COMMAND"
+
+KEY=$(echo "$SSH_ORIGINAL_COMMAND" | sed -e "s/^load-ssh-key \/ssh\/keys\/\(.*\)/\1/")
 
 echo "+ key to load: $KEY"
-if [ -r $KEY ]; then
-    ssh-add /ssh/keys/$KEY
+if [ ! -z "$KEY" -a -r "/ssh/keys/$KEY" ]; then
+    eval $(ssh-agent -s)
+    ssh-add /ssh/keys/$KEY && nc %h %p
     exit 0
 fi
 
 echo "+ go away nasty"
-exit1
+exit 1

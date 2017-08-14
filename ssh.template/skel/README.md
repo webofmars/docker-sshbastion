@@ -1,0 +1,1 @@
+In this folder you should put homes skeleton files & directories

@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv ash
+
+for u in $SSHBASTION_USERS; do
+    echo "+ adding user $u"
+    adduser -G sshusers -g "" -s /bin/ash -D -k /ssh/skel $u && \
+    sed -e "s/$i:.:/$i:*:/" -iback /etc/shadow
+done

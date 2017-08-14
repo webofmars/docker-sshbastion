@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  bastion:
+    image: webofmars/sshbastion:develop
+    environment:
+      SSHBASTION_USERS: "john sue fred"
+      SSHBASTION_LOG_LEVEL: "DEBUG3"
+      SSHBASTION_MODE: "with-logins"
+    ports:
+      - "2222:22"
+    volumes:
+      - ../ssh:/ssh

@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv ash
+
+/usr/sbin/sshd -u0 -De -f /etc/ssh/sshd_config
